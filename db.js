@@ -20,3 +20,5 @@ export const conexionDB = async () => {
     }
 
 }
+
+export { Model, DataTypes}
