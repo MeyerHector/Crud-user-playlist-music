@@ -1,6 +1,6 @@
-import { sequelize, Model, DataTypes } from '../../db'
-import { user } from './user'
-import { music } from './music'
+import { sequelize, Model, DataTypes } from '../../db.js'
+import { user } from './user.js'
+import { music } from './music.js'
 
 export const playlist = sequelize.define('post', {
     id: {

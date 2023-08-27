@@ -1,4 +1,4 @@
-import { sequelize, Model, DataTypes } from '../../db'
+import { sequelize, Model, DataTypes } from '../../db.js'
 
 export const music = sequelize.define('comment', {
     id: {
