@@ -1,5 +1,6 @@
-import { sequelize, Model, DataTypes } from '../../db.js'
-import { playlist } from './playlist.js'
+import { sequelize, Model, DataTypes } from '../../db.js';
+import { playlist } from './playlist.js';
+
 export const music = sequelize.define('music', {
     id: {
         type: DataTypes.INTEGER,
@@ -11,16 +12,26 @@ export const music = sequelize.define('music', {
         allowNull: false,
     },
     music_name: {
-        type: DataTypes.STRING(20)
+        type: DataTypes.STRING(20),
+        allowNull: false
+    },
+    album: {
+        type: DataTypes.STRING(20),
+        allowNull: true
     },
     author: {
         type: DataTypes.STRING(30),
+        allowNull: false
+    },
+    youtube_link: {
+        type: DataTypes.STRING,
         allowNull: false
     }
 },
     {
         timestamps: false,
-    })
+    }
+)
 
 
 try {
