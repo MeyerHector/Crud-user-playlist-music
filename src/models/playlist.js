@@ -1,6 +1,4 @@
 import { sequelize, Model, DataTypes } from '../../db.js'
-import { music } from './music.js';
-import { user } from './user.js'
 
 export const playlist = sequelize.define('playlist', {
     id: {
@@ -25,7 +23,6 @@ export const playlist = sequelize.define('playlist', {
         timestamps: true,
     })
 
-playlist.hasMany(music, {foreignKey:'playlist_id'})
 
 
 try {

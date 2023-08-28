@@ -1,5 +1,4 @@
 import { sequelize, Model, DataTypes } from '../../db.js';
-import { playlist } from './playlist.js';
 
 export const music = sequelize.define('music', {
     id: {
