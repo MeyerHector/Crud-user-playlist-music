@@ -1,6 +1,7 @@
+//importacion de sequelize
 import { Sequelize, Model, DataTypes } from 'sequelize'
 
-
+//conexion a la base de datos
 export const sequelize = new Sequelize(
     process.env.DB_DATABASE,
     process.env.DB_USER,
@@ -11,6 +12,7 @@ export const sequelize = new Sequelize(
     }
 )
 
+//funcion de la conexion a la base de datos
 export const conexionDB = async () => {
     try {
         await sequelize.authenticate()

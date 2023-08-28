@@ -1,5 +1,6 @@
 import { sequelize, Model, DataTypes } from "../../db.js";
 
+//definicion del modelo user
 export const user = sequelize.define('user', {
     id: {
         type: DataTypes.INTEGER(10)
@@ -26,6 +27,7 @@ export const user = sequelize.define('user', {
     })
 
 
+    //sincronizacion de la base de datos con la tabla
 try {
     user.sync({ force: false }).then(() => {
         console.log('Tabla de usuarios creada');

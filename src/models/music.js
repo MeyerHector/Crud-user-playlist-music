@@ -1,5 +1,6 @@
 import { sequelize, Model, DataTypes } from '../../db.js';
 
+//definicion del modelo music
 export const music = sequelize.define('music', {
     id: {
         type: DataTypes.INTEGER,
@@ -33,6 +34,7 @@ export const music = sequelize.define('music', {
 )
 
 
+    //sincronizacion de la base de datos con la tabla
 try {
     music.sync({ force: false }).then(() => {
         console.log('Tabla de musicas creada');

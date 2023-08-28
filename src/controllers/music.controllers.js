@@ -2,15 +2,19 @@ import { music } from '../models/music.js'
 import { playlist } from '../models/playlist.js';
 
 export const addMusic = async (req, res) => {
+    //captura los datos del req.body y req.params
     const { music_name, album, author, youtube_link } = req.body;
     const playlist_id = req.params.id;
+
     try {
+        //hace la consulta para agregar traer una playlist con el id indicado
         const playlistSelected = await playlist.findOne({
             where: {
                 id : playlist_id
             }
         })
 
+        //hace otra consulta para crear una musica con los valores proporcionados
         const newMusic = await music.create({
             playlist_id: playlist_id,
             music_name: music_name,
@@ -18,6 +22,8 @@ export const addMusic = async (req, res) => {
             author: author,
             youtube_link: youtube_link
         })
+
+        //si no se proporcionaron datos devuelve status 400 con mensaje
         if(!newMusic) {
             throw ({
                 status: 400,
@@ -25,12 +31,15 @@ export const addMusic = async (req, res) => {
             })
         }
         
+        //si salio todo bien devuelve la musica agregada junto a la playlist que pertenece
         const response = {
             playlistSelected,
             newMusic
         }
 
         return res.json(response)
+
+        //si hubo un error devuelve status 500 con el mensaje de error
     } catch (error) {
         console.log('Could not add the music', error)
         return res.status(error.status || 500).json(error.message || 'Internal server error')

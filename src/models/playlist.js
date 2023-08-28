@@ -1,5 +1,6 @@
 import { sequelize, Model, DataTypes } from '../../db.js'
 
+//definicion del modelo playlist
 export const playlist = sequelize.define('playlist', {
     id: {
         type: DataTypes.INTEGER(10),
@@ -24,7 +25,7 @@ export const playlist = sequelize.define('playlist', {
     })
 
 
-
+    //sincronizacion de la base de datos con la tabla
 try {
     playlist.sync({ force: false }).then(() => {
         console.log('Tabla de playlists creada');
