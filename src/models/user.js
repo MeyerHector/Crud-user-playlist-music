@@ -1,4 +1,5 @@
 import { sequelize, Model, DataTypes } from "../../db.js";
+import { playlist } from "./playlist.js";
 
 export const user = sequelize.define('user', {
     id: {
@@ -25,6 +26,7 @@ export const user = sequelize.define('user', {
         timestamps: true,
     })
 
+    user.hasMany(playlist, {foreignKey:'user_id'})
 
 try {
     user.sync({ force: false }).then(() => {

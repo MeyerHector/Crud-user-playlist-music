@@ -6,7 +6,6 @@ export const createUserSchema = checkSchema({
             options:[{min:3},{max:15}],
             errorMessage: "Username must be between 3 and 15 characters long"
         },
-        is
     },
     email: {
         errorMessage: 'Invalid email',

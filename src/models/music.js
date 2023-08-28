@@ -1,6 +1,6 @@
 import { sequelize, Model, DataTypes } from '../../db.js'
-
-export const music = sequelize.define('comment', {
+import { playlist } from './playlist.js'
+export const music = sequelize.define('music', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
