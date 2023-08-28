@@ -1,14 +1,18 @@
 import { Router } from 'express'
-import { createPlaylistCtrl, deletePlaylistCtrl, updatePlaylistCtrl } from '../controllers/playlist.controllers.js'
+import { createPlaylistCtrl, deletePlaylistCtrl, findAllPlaylist, findById, updatePlaylistCtrl } from '../controllers/playlist.controllers.js'
 
 import { validateSchema } from '../middlewares/express-validator.js'
 import { createPlaylistSchema } from '../models/playlist.shema.js'
 const playlistRouter = Router()
 
-playlistRouter.post('/api/:id/createPlaylist', createPlaylistSchema, validateSchema, createPlaylistCtrl)
+playlistRouter.get('/api/user/:id/playlists', findAllPlaylist)
 
-playlistRouter.put('/api/:user_id/updatePlaylist/:id', createPlaylistSchema, validateSchema, updatePlaylistCtrl)
+playlistRouter.get('/api/user/:user_id/playlist/:id', findById)
 
-playlistRouter.delete('/api/:user_id/deletePlaylist/:id', deletePlaylistCtrl)
+playlistRouter.post('/api/user/:id/createPlaylist', createPlaylistSchema, validateSchema, createPlaylistCtrl)
+
+playlistRouter.put('/api/user/:user_id/updatePlaylist/:id', createPlaylistSchema, validateSchema, updatePlaylistCtrl)
+
+playlistRouter.delete('/api/user/:user_id/deletePlaylist/:id', deletePlaylistCtrl)
 
 export { playlistRouter }

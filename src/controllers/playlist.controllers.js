@@ -1,5 +1,55 @@
 import { playlist } from '../models/playlist.js'
 
+export const findAllPlaylist = async (req, res) => {
+    try {
+        const user_id = req.params.id;
+
+        const allPlaylist = await playlist.findAll({
+            where: {
+                state: true,
+                user_id: user_id
+            }
+
+        })
+        if(!allPlaylist) {
+            throw ({
+                status:404,
+                message:'There are no playlist avalible'
+            })
+        }
+
+        return res.json(allPlaylist)
+    } catch (error) {
+        console.log('Could not find playlists', error)
+        return res.status(error.status || 500).json(error.message || 'internal server error')
+    }
+}
+
+export const findById = async (req, res) => {
+    try {
+        const user_id = req.params.user_id;
+        const id = req.params.id
+
+        const playlistById = await playlist.findOne({
+            where: {
+                id: id,
+                user_id: user_id
+            }
+        })
+        if(!playlistById) {
+            throw({
+                status:404,
+                message:`There's no playlist number ${id}`
+            })
+        }
+        return res.json(playlistById);     
+        
+    } catch (error) {
+        console.log('Could not find playlist', error)
+        return res.status(error.status || 500).json(error.message || 'internal server error')
+    }
+}
+
 export const createPlaylistCtrl = async (req, res) => {
     const { title } = req.body;
     try {
@@ -13,9 +63,10 @@ export const createPlaylistCtrl = async (req, res) => {
                 status: 400,
                 message: 'Could not create playlist'
             })
-
         }
+
         return res.json(newPlaylist)
+
     } catch (error) {
         console.log('Could not create playlist', error)
         return res.status(error.status || 500).json(error.message || 'internal server error')

@@ -20,8 +20,10 @@ conexionDB()
 
 import { userRouter } from './src/routes/user.routes.js'
 import { playlistRouter } from './src/routes/playlist.routes.js'
-app.use(userRouter)
-app.use(playlistRouter)
+import { musicRouter } from './src/routes/music.routes.js'
+app.use(userRouter);
+app.use(playlistRouter);
+app.use(musicRouter);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server running on http://localhost:${process.env.PORT}`)
