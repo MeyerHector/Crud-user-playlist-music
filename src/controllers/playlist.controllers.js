@@ -64,8 +64,8 @@ export const findById = async (req, res) => {
 export const createPlaylistCtrl = async (req, res) => {
     //captura los valores que van dentro del req.body y req.params
     const { title } = req.body;
-    const { id } = req.params.id
-
+    const id = req.params.id
+    console.log(id)
     try {
         //llama a la funcion create para el modelo playlist con los valores anteriormente capturado
         const newPlaylist = await playlist.create({
