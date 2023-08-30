@@ -6,6 +6,7 @@ import morgan from 'morgan'
 import 'dotenv/config'
 
 
+
 //configuracion del app y los middlewares
 const app = express()
 
