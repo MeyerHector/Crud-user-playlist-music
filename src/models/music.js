@@ -37,7 +37,7 @@ export const music = sequelize.define('music', {
     //sincronizacion de la base de datos con la tabla
 try {
     music.sync({ force: false }).then(() => {
-        console.log('Tabla de musicas creada');
+        console.log('Music table created');
     });
 } catch (error) {
     console.log('error al crear la tabla musicas', error)
